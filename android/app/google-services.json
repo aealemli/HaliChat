@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "700532709077",
+    "project_id": "halichat",
+    "storage_bucket": "halichat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700532709077:android:83f92eb01d53b59f6af45c",
+        "android_client_info": {
+          "package_name": "com.example.halichat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700532709077-c56a4mdkrhjrrepkm4h4bbhfe73aq8vk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB08D3wT5Vm-CLETAj9JWzRSaxukUxfaVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700532709077-c56a4mdkrhjrrepkm4h4bbhfe73aq8vk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
