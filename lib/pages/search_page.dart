@@ -1,7 +1,7 @@
-import 'package:chatapp_firebase/helper/helper_function.dart';
-import 'package:chatapp_firebase/pages/chat_page.dart';
-import 'package:chatapp_firebase/service/database_service.dart';
-import 'package:chatapp_firebase/widgets/widgets.dart';
+import 'package:HaliChat/helper/helper_function.dart';
+import 'package:HaliChat/pages/chat_page.dart';
+import 'package:HaliChat/service/database_service.dart';
+import 'package:HaliChat/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +142,7 @@ class _SearchPageState extends State<SearchPage> {
   joinedOrNot(
       String userName, String groupId, String groupname, String admin) async {
     await DatabaseService(uid: user!.uid)
-        .isUserJoined(groupname, groupId, userName)
+        .isUserJoined(groupname, groupId)
         .then((value) {
       setState(() {
         isJoined = value;

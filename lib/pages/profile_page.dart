@@ -1,7 +1,7 @@
-import 'package:chatapp_firebase/pages/auth/login_page.dart';
-import 'package:chatapp_firebase/pages/home_page.dart';
-import 'package:chatapp_firebase/service/auth_service.dart';
-import 'package:chatapp_firebase/widgets/widgets.dart';
+import 'package:HaliChat/pages/auth/login_page.dart';
+import 'package:HaliChat/pages/home_page.dart';
+import 'package:HaliChat/service/auth_service.dart';
+import 'package:HaliChat/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         title: const Text(
-          "Profile",
+          "Profil",
           style: TextStyle(
               color: Colors.white, fontSize: 27, fontWeight: FontWeight.bold),
         ),
@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             leading: const Icon(Icons.group),
             title: const Text(
-              "Groups",
+              "Gruplar",
               style: TextStyle(color: Colors.black),
             ),
           ),
@@ -71,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             leading: const Icon(Icons.group),
             title: const Text(
-              "Profile",
+              "Profil",
               style: TextStyle(color: Colors.black),
             ),
           ),
@@ -82,8 +82,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   context: context,
                   builder: (context) {
                     return AlertDialog(
-                      title: const Text("Logout"),
-                      content: const Text("Are you sure you want to logout?"),
+                      title: const Text("Çıkış Yap"),
+                      content:
+                          const Text("Çıkış yapmak istediğine emin misin?"),
                       actions: [
                         IconButton(
                           onPressed: () {
@@ -115,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             leading: const Icon(Icons.exit_to_app),
             title: const Text(
-              "Logout",
+              "Çıkış Yap",
               style: TextStyle(color: Colors.black),
             ),
           )
@@ -137,7 +138,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Full Name", style: TextStyle(fontSize: 17)),
+                const Text("Ad Soyad", style: TextStyle(fontSize: 17)),
                 Text(widget.userName, style: const TextStyle(fontSize: 17)),
               ],
             ),

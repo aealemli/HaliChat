@@ -1,11 +1,11 @@
 {
-    "name": "chatapp_firebase",
-    "short_name": "chatapp_firebase",
+    "name": "halichat",
+    "short_name": "halichat",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Haliç Üniversitesi Chat Uygulaması",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

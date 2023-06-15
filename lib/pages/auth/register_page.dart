@@ -1,8 +1,8 @@
-import 'package:chatapp_firebase/helper/helper_function.dart';
-import 'package:chatapp_firebase/pages/auth/login_page.dart';
-import 'package:chatapp_firebase/pages/home_page.dart';
-import 'package:chatapp_firebase/service/auth_service.dart';
-import 'package:chatapp_firebase/widgets/widgets.dart';
+import 'package:HaliChat/helper/helper_function.dart';
+import 'package:HaliChat/pages/auth/login_page.dart';
+import 'package:HaliChat/pages/home_page.dart';
+import 'package:HaliChat/service/auth_service.dart';
+import 'package:HaliChat/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final formKey = GlobalKey<FormState>();
   String email = "";
   String password = "";
-  String fullName = "";
+  String name = "";
   AuthService authService = AuthService();
   @override
   Widget build(BuildContext context) {
@@ -38,33 +38,32 @@ class _RegisterPageState extends State<RegisterPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         const Text(
-                          "Groupie",
+                          "HaliChat",
                           style: TextStyle(
                               fontSize: 40, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                            "Create your account now to chat and explore",
+                        const Text("Şimdi hesap oluşturun",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w400)),
                         Image.asset("assets/register.png"),
                         TextFormField(
                           decoration: textInputDecoration.copyWith(
-                              labelText: "Full Name",
+                              labelText: "Ad Soyad",
                               prefixIcon: Icon(
                                 Icons.person,
                                 color: Theme.of(context).primaryColor,
                               )),
                           onChanged: (val) {
                             setState(() {
-                              fullName = val;
+                              name = val;
                             });
                           },
                           validator: (val) {
                             if (val!.isNotEmpty) {
                               return null;
                             } else {
-                              return "Name cannot be empty";
+                              return "Adınız boş olamaz.";
                             }
                           },
                         ),
@@ -90,21 +89,21 @@ class _RegisterPageState extends State<RegisterPage> {
                                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                     .hasMatch(val!)
                                 ? null
-                                : "Please enter a valid email";
+                                : "Lütfen geçerli bir email adresi girin.";
                           },
                         ),
                         const SizedBox(height: 15),
                         TextFormField(
                           obscureText: true,
                           decoration: textInputDecoration.copyWith(
-                              labelText: "Password",
+                              labelText: "Şifre",
                               prefixIcon: Icon(
                                 Icons.lock,
                                 color: Theme.of(context).primaryColor,
                               )),
                           validator: (val) {
                             if (val!.length < 6) {
-                              return "Password must be at least 6 characters";
+                              return "Şifreniz minimum 6 karakterden oluşmalıdır...";
                             } else {
                               return null;
                             }
@@ -127,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30))),
                             child: const Text(
-                              "Register",
+                              "Üye ol!",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
@@ -140,12 +139,12 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 10,
                         ),
                         Text.rich(TextSpan(
-                          text: "Already have an account? ",
+                          text: "Zaten bir hesabın var mı? ",
                           style: const TextStyle(
                               color: Colors.black, fontSize: 14),
                           children: <TextSpan>[
                             TextSpan(
-                                text: "Login now",
+                                text: "Giriş yap",
                                 style: const TextStyle(
                                     color: Colors.black,
                                     decoration: TextDecoration.underline),
@@ -168,13 +167,15 @@ class _RegisterPageState extends State<RegisterPage> {
         _isLoading = true;
       });
       await authService
-          .registerUserWithEmailandPassword(fullName, email, password)
+          .registerUserWithEmailAndPassword(name, email, password)
           .then((value) async {
         if (value == true) {
           // saving the shared preference state
           await HelperFunctions.saveUserLoggedInStatus(true);
           await HelperFunctions.saveUserEmailSF(email);
-          await HelperFunctions.saveUserNameSF(fullName);
+          await HelperFunctions.saveUserNameSF(name);
+          await HelperFunctions.saveUserPasswordSF(password);
+
           nextScreenReplace(context, const HomePage());
         } else {
           showSnackbar(context, Colors.red, value);
